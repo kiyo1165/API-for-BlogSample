@@ -4,8 +4,6 @@ from .models import Blog, Tag
 from auth_api.models import User
 from rest_framework import viewsets, generics, status
 from rest_framework.response import Response
-from rest_framework.decorators import action
-from django_filters import rest_framework as filters
 
 # Create your views here.
 
@@ -57,9 +55,11 @@ class BlogListView(viewsets.ModelViewSet):
 class BlogCreateViewSets(viewsets.ModelViewSet):
     serializer_class = BlogCreateSerializer
     queryset = Blog.objects.all()
+
     permission_classes = (AllowAny,)
 
     def perform_create(self, serializer):
+        print(self.request)
         if not self.request.data["image"]:
             serializer.save(image="estlove.jpeg")
         # serializer.save(user=self.request.user)
