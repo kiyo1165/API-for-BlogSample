@@ -12,6 +12,7 @@ djoser = "*"
 django-environ = "*"
 pillow = "*"
 django-filter = "*"
+dj-static = "*"
 
 [dev-packages]
 
